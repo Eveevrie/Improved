@@ -79,4 +79,25 @@ function handleNoClick() {
 
 function handleYesClick() {
     window.location.href = "yes_page.html";
+
 }
+let currentSlide = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    if (i === index) slide.classList.add("active");
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+
+// Ganti slide otomatis tiap 4 detik
+setInterval(nextSlide, 4000);
+
+// Tampilkan slide pertama
+showSlide(currentSlide);
